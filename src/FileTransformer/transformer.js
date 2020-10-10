@@ -85,22 +85,6 @@ const transformJSON = (jsonsTOProccess) => {
     createJobCompleteFlag(jsonsTOProccess)
 }
 
-const checkJSONExist = (jobQueue) => {
-    return new Promise((resolve => {
-        const dates = {}
-        jobQueue.forEach(e =>  Object.assign(dates, {[e] : e}))
-        jobQueue.forEach(e => {
-            let date = e.substring(0, 13)
-            let key = `${date}.json`
-            if(key in dates) {
-                removeFromSet(jobQueue, date)
-            }
-        })
-        resolve()
-    }))
-
-}
-
 const prepareTransformJob = async (jobQueue) => {
     await checkJobStartedFlag(jobQueue)
     await checkJobCompletedFlag(jobQueue)
