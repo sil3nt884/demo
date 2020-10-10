@@ -2,15 +2,18 @@
   "name": "demo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fileWatch": "node src/FileWatcher/filewatcher.js",
+    "transform": "node src/FileTransformer/transformer.js",
+    "start": "concurrently --kill-others \"npm run fileWatch\" \"npm run transform\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "chokidar": "^3.4.2",
+    "concurrently": "^5.3.0",
     "js-yaml": "^3.14.0"
   }
 }
